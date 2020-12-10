@@ -1,0 +1,8 @@
+# Exclude everything by default, because rustc output binaries do not have an
+# extension to match against.
+*
+
+# Allowed filetypes:
+!.gitignore
+!*.md
+!*.rs
