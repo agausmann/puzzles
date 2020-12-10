@@ -16,13 +16,11 @@ fn main() {
             let j: usize = part.parse().unwrap();
 
             let (part, rem) = rem.split_once(": ").unwrap();
-            let c: char = part.parse().unwrap();
+            let c: u8 = part.as_bytes()[0];
 
-            (i, j, c, rem)
+            (i, j, c, rem.as_bytes())
         })
-        .filter(|&(i, j, c, pass)| {
-            (pass.chars().nth(i - 1).unwrap() == c) ^ (pass.chars().nth(j - 1).unwrap() == c)
-        })
+        .filter(|&(i, j, c, pass)| (pass[i - 1] == c) ^ (pass[j - 1] == c))
         .count();
 
     println!("{}", result);

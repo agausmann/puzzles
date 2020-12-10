@@ -16,12 +16,12 @@ fn main() {
             let j: usize = part.parse().unwrap();
 
             let (part, rem) = rem.split_once(": ").unwrap();
-            let c: char = part.parse().unwrap();
+            let c: u8 = part.as_bytes()[0];
 
-            (i, j, c, rem)
+            (i, j, c, rem.as_bytes())
         })
         .filter(|&(i, j, c, pass)| {
-            let count = pass.chars().filter(|&d| d == c).count();
+            let count = pass.iter().filter(|&&d| d == c).count();
             count >= i && count <= j
         })
         .count();
