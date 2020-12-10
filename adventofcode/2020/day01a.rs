@@ -1,12 +1,11 @@
-use std::io::{stdin, BufRead};
+use std::io::{stdin, Read};
 
 fn main() {
-    let stdin = stdin();
-    let handle = stdin.lock();
+    let mut input = String::new();
+    stdin().read_to_string(&mut input).unwrap();
 
-    let entries = handle
+    let entries = input
         .lines()
-        .map(Result::unwrap)
         .filter_map(|line| line.parse::<usize>().ok())
         .filter(|&x| x <= 2020);
 
